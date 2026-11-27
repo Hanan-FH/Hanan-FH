@@ -1,307 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" width="100%" height="100%" fill="none" role="img" aria-label="Hanan Fathurrozaq Hidayatullah — CH.00 Opening Manga Spread">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 220" width="100%" height="100%" fill="none" role="img" aria-label="Hanan Fathurrozaq Hidayatullah">
   <defs>
-    <!-- Pure-SVG Dot Halftone Pattern (Matte Manga Paper Texture) -->
-    <pattern id="manga-halftone" x="0" y="0" width="7" height="7" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.95" fill="#060608" />
+    <!-- Fine dot halftone pattern -->
+    <pattern id="halftone" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#F4F4F4" />
     </pattern>
 
-    <!-- Denser Halftone for Right Aura Field -->
-    <pattern id="aura-halftone" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
-      <circle cx="2.5" cy="2.5" r="1.05" fill="#060608" />
-    </pattern>
+    <!-- Soft horizontal fade mask for right-side halftone -->
+    <linearGradient id="halftone-fade" x1="560" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="55%" stop-color="#FFFFFF" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1" />
+    </linearGradient>
+    <mask id="right-fade-mask">
+      <rect x="560" y="0" width="440" height="220" fill="url(#halftone-fade)" />
+    </mask>
 
-    <!-- Clip Path for the Main Canvas -->
-    <clipPath id="hero-clip">
-      <rect x="0" y="0" width="1000" height="320" />
-    </clipPath>
-
-    <!-- Clip Path for the Diagonal Pitch-Ink Manga Art Panel on the Right -->
-    <clipPath id="panel-clip">
-      <polygon points="566,22 924,22 904,254 538,264" />
+    <clipPath id="canvas-clip">
+      <rect x="0" y="0" width="1000" height="220" />
     </clipPath>
   </defs>
 
   <style>
-    .f-display {
-      font-family: 'Archivo Black', 'Arial Black', 'Impact', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-weight: 900;
+    .title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: -0.025em;
     }
-    .f-mono {
+    .mono {
       font-family: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      text-transform: uppercase;
-    }
-    .f-kanji {
-      font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', 'MS PMincho', serif;
-      font-weight: 900;
     }
 
-    /* Subtle Breathing Manga Aura Wisps */
-    .wisp-1 {
-      animation: wisp-pulse 5.4s ease-in-out infinite alternate;
-      transform-origin: 550px 210px;
-    }
-    .wisp-2 {
-      animation: wisp-pulse 6.2s ease-in-out -2.1s infinite alternate;
-      transform-origin: 890px 40px;
-    }
-    @keyframes wisp-pulse {
-      0% { transform: translateY(4px) scale(0.96); opacity: 0.82; }
-      100% { transform: translateY(-5px) scale(1.04); opacity: 1; }
-    }
-
-    /* Amaterasu Black Lightning — 5s double-flicker cycle (steps(1, end)) */
-    .amaterasu-main {
+    /* Subtle monochrome lightning flicker once every 6s */
+    .bolt-main {
       opacity: 0;
-      animation: amaterasu-strike 5s steps(1, end) -3.8s infinite;
+      animation: bolt-flicker 6s steps(1, end) -4.2s infinite;
     }
-    .amaterasu-forks {
+    .bolt-branch {
       opacity: 0;
-      animation: amaterasu-aftershock 5s steps(1, end) -3.8s infinite;
-    }
-    .amaterasu-flash {
-      opacity: 0;
-      animation: amaterasu-impact 5s steps(1, end) -3.8s infinite;
+      animation: branch-flicker 6s steps(1, end) -4.2s infinite;
     }
 
-    @keyframes amaterasu-strike {
-      0%, 84% { opacity: 0; transform: translate(0, 0); }
-      84.5%, 87.2% { opacity: 1; transform: translate(1.5px, -1px); }
-      87.3%, 88.8% { opacity: 0.9; transform: translate(-1px, 1px); }
-      88.9%, 90.4% { opacity: 0; transform: translate(0, 0); }
-      90.5%, 94.5% { opacity: 1; transform: translate(2px, -1.5px); }
-      94.6%, 96.8% { opacity: 0.75; transform: translate(-1px, 0.5px); }
-      96.9%, 100% { opacity: 0; transform: translate(0, 0); }
-    }
-
-    @keyframes amaterasu-aftershock {
-      0%, 85.2% { opacity: 0; }
-      85.3%, 88.8% { opacity: 0.45; }
-      88.9%, 90.4% { opacity: 0; }
-      90.5%, 95.8% { opacity: 1; }
+    @keyframes bolt-flicker {
+      0%, 88% { opacity: 0; }
+      88.5%, 90.2% { opacity: 0.9; }
+      90.3%, 91.5% { opacity: 0.15; }
+      91.6%, 94.2% { opacity: 1; }
+      94.3%, 95.8% { opacity: 0.45; }
       95.9%, 100% { opacity: 0; }
     }
 
-    @keyframes amaterasu-impact {
-      0%, 84.4% { opacity: 0; }
-      84.5%, 86.2% { opacity: 0.16; }
-      86.3%, 90.4% { opacity: 0; }
-      90.5%, 92.8% { opacity: 0.24; }
-      92.9%, 100% { opacity: 0; }
+    @keyframes branch-flicker {
+      0%, 91.5% { opacity: 0; }
+      91.6%, 94.5% { opacity: 0.75; }
+      94.6%, 100% { opacity: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .amaterasu-main, .amaterasu-forks {
+      .bolt-main {
         animation: none !important;
-        opacity: 1 !important;
+        opacity: 0.35 !important;
       }
-      .amaterasu-flash, .wisp-1, .wisp-2 {
+      .bolt-branch {
         animation: none !important;
+        opacity: 0.2 !important;
       }
     }
   </style>
 
-  <g clip-path="url(#hero-clip)">
-    <!-- 1. MATTE MANGA PAPER BASE (#ECECF0) + DOT HALFTONE OVERLAY -->
-    <rect x="0" y="0" width="1000" height="320" fill="#ECECF0" />
-    <rect x="0" y="0" width="1000" height="320" fill="url(#manga-halftone)" opacity="0.07" />
+  <g clip-path="url(#canvas-clip)">
+    <!-- Deep Matte Black Canvas (#0A0A0A) -->
+    <rect x="0" y="0" width="1000" height="220" fill="#0A0A0A" />
 
-    <!-- 2. OVERSIZED WATERMARK TYPOGRAPHY (00 & 零) -->
-    <text x="18" y="294" class="f-display" font-size="184" fill="#060608" opacity="0.04" letter-spacing="-8">00</text>
-    <text x="790" y="195" class="f-kanji" font-size="230" fill="#060608" opacity="0.055">零</text>
+    <!-- Barely-visible fine dot halftone gradient fading softly on the right edge -->
+    <rect x="560" y="0" width="440" height="220" fill="url(#halftone)" mask="url(#right-fade-mask)" opacity="0.08" />
 
-    <!-- 3. FAINT RADIAL SPEEDLINES BEHIND RIGHT SIDE (CONVERGING AT 730,142) -->
-    <g fill="#060608" opacity="0.055">
-      <polygon points="730,142 430,0 448,0" />
-      <polygon points="730,142 520,0 534,0" />
-      <polygon points="730,142 612,0 622,0" />
-      <polygon points="730,142 698,0 706,0" />
-      <polygon points="730,142 782,0 792,0" />
-      <polygon points="730,142 874,0 888,0" />
-      <polygon points="730,142 975,0 995,0" />
-      <polygon points="730,142 1000,48 1000,59" />
-      <polygon points="730,142 1000,104 1000,112" />
-      <polygon points="730,142 1000,164 1000,174" />
-      <polygon points="730,142 1000,224 1000,238" />
-      <polygon points="730,142 940,290 960,290" />
-      <polygon points="730,142 820,290 834,290" />
-      <polygon points="730,142 640,290 652,290" />
-      <polygon points="730,142 510,290 528,290" />
-      <polygon points="730,142 390,260 406,272" />
-      <polygon points="730,142 380,175 380,185" />
-      <polygon points="730,142 380,92 380,103" />
+    <!-- Subtle Right Accent: Single Clean Diagonal White Ink Slash (1.5px) -->
+    <line x1="896" y1="0" x2="778" y2="220" stroke="#262626" stroke-width="1" />
+    <line x1="908" y1="0" x2="790" y2="220" stroke="#F4F4F4" stroke-width="1.5" stroke-opacity="0.72" />
+
+    <!-- Subtle Monochrome Lightning Flicker Along Right Accent (Every 6s) -->
+    <g class="bolt-main" stroke-linecap="square" stroke-linejoin="bevel">
+      <path
+        d="M892 18 L858 64 L874 61 L832 118 L848 115 L804 176 L816 173 L792 204"
+        stroke="#737373"
+        stroke-width="3"
+        stroke-opacity="0.45"
+      />
+      <path
+        d="M892 18 L858 64 L874 61 L832 118 L848 115 L804 176 L816 173 L792 204"
+        stroke="#F4F4F4"
+        stroke-width="1.35"
+      />
+    </g>
+    <g class="bolt-branch" stroke="#F4F4F4" stroke-width="0.9" stroke-linecap="square" stroke-linejoin="bevel">
+      <path d="M858 64 L828 80 L836 84 L812 102" />
+      <path d="M848 115 L876 136 L866 140 L888 158" />
     </g>
 
-    <!-- 4. TOP EDITORIAL REGISTRATION BAR -->
-    <polygon points="0,0 148,0 138,26 0,26" fill="#060608" />
-    <text x="16" y="17" class="f-mono" font-size="10" font-weight="700" fill="#ECECF0" letter-spacing="1.5">H.FH <tspan fill="#584CE6">//</tspan> CH.00</text>
-    <line x1="148" y1="13" x2="518" y2="13" stroke="#060608" stroke-width="0.75" opacity="0.18" />
-
-    <!-- 5. LEFT COVER ZONE: CHAPTER BADGE, KANJI STAMP & OVERSIZED DISPLAY NAME -->
-    <!-- Tilted #584CE6 Badge: CH.00 // OPENING + Framed Kanji 零 -->
-    <g transform="translate(44, 52)">
-      <g transform="rotate(-1.8 74 13)">
-        <rect x="0" y="0" width="148" height="24" fill="#584CE6" />
-        <text x="74" y="16" class="f-mono" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.4">CH.00 // OPENING</text>
-      </g>
-
-      <!-- Framed Kanji Stamp 零 -->
-      <rect x="158" y="0" width="24" height="24" fill="none" stroke="#060608" stroke-width="1.4" />
-      <text x="170" y="17" class="f-kanji" font-size="14" fill="#060608" text-anchor="middle">零</text>
-
-      <!-- Sub-stamp 電光石火 -->
-      <text x="192" y="16.5" class="f-kanji" font-size="12" fill="#584CE6" letter-spacing="2.5">電光石火</text>
-    </g>
-
-    <!-- Oversized Stacked Display Name -->
-    <g transform="translate(42, 144)">
-      <text x="0" y="0" class="f-display" font-size="76" fill="#060608" letter-spacing="-2.5">HANAN</text>
-      <text x="2" y="42" class="f-display" font-size="35" fill="#060608" letter-spacing="-1.2">FATHURROZAQ</text>
-      <text x="2" y="79" class="f-display" font-size="35" fill="#060608" letter-spacing="-1.2">HIDAYATULLAH</text>
-
-      <!-- Tilted //26 Edition Tag -->
-      <g transform="translate(324, 62) rotate(-6)">
-        <rect x="0" y="0" width="44" height="20" fill="#060608" />
-        <text x="22" y="14" class="f-mono" font-size="11" font-weight="700" fill="#584CE6" text-anchor="middle" letter-spacing="1">//26</text>
-      </g>
-    </g>
-
-    <!-- Clean Monospace Subtitle + Vocational Metadata -->
-    <g transform="translate(44, 244)">
-      <rect x="0" y="-11" width="3" height="28" fill="#584CE6" />
-      <text x="12" y="0" class="f-mono" font-size="11.5" font-weight="700" fill="#060608" letter-spacing="1.4">
-        SOFTWARE ENGINEERING STUDENT · BOGOR, ID
-      </text>
-      <text x="12" y="15" class="f-mono" font-size="10" font-weight="600" fill="#4E4E57" letter-spacing="1.1">
-        SMK PLUS PELITA NUSANTARA <tspan fill="#584CE6">//</tspan> REKAYASA PERANGKAT LUNAK (RPL)
-      </text>
-    </g>
-
-    <!-- 6. RIGHT SIDE VISUAL: SHARP DIAGONAL PITCH-INK MANGA PANEL & AURA -->
-    <!-- Halftone Pressure Field Behind Panel -->
-    <polygon points="550,12 936,12 914,264 522,274" fill="url(#aura-halftone)" opacity="0.14" />
-
-    <!-- Perimeter Ink & Electric-Violet Shards (Manga Aura Wisps) -->
-    <g class="wisp-1">
-      <polygon points="520,224 548,162 556,246 514,254" fill="#584CE6" />
-      <polygon points="554,18 576,4 584,32 548,30" fill="#060608" />
-    </g>
-    <g class="wisp-2">
-      <polygon points="884,8 912,0 904,34 876,26" fill="#584CE6" />
-      <polygon points="914,196 936,162 926,238 902,226" fill="#060608" />
-    </g>
-
-    <!-- Offset Electric-Violet Frame Shadow -->
-    <polygon points="572,27 930,27 910,259 544,269" fill="#584CE6" />
-
-    <!-- Main Slashed Pitch-Ink (#060608) Manga Panel -->
-    <polygon points="566,22 924,22 904,254 538,264" fill="#060608" />
-
-    <!-- Interior of the Slashed Manga Panel -->
-    <g clip-path="url(#panel-clip)">
-      <!-- Impact Flash Layer Inside Panel During Lightning Strike -->
-      <rect x="530" y="15" width="410" height="260" fill="#584CE6" class="amaterasu-flash" />
-
-      <!-- Crisp Interior Manga Speed Slash Geometry & Architectural Grid -->
-      <g stroke="#ECECF0" stroke-opacity="0.12" stroke-width="1">
-        <line x1="538" y1="74" x2="924" y2="54" />
-        <line x1="538" y1="198" x2="924" y2="178" />
-        <line x1="636" y1="22" x2="612" y2="264" />
-        <line x1="832" y1="22" x2="808" y2="264" />
-      </g>
-
-      <!-- Oversized Outlined Manga Panel Graphic Typography -->
-      <text x="580" y="188" class="f-display" font-size="136" fill="none" stroke="#ECECF0" stroke-width="1.5" stroke-opacity="0.16" letter-spacing="-4">00</text>
-      <text x="742" y="214" class="f-kanji" font-size="148" fill="#ECECF0" opacity="0.08">零</text>
-
-      <!-- High-Contrast Diagonal Manga Cut Strip Across Panel -->
-      <polygon points="530,136 930,104 930,130 530,162" fill="#ECECF0" />
-      <text x="576" y="148" class="f-mono" font-size="11" font-weight="700" fill="#060608" letter-spacing="3.2" transform="rotate(-4.6 576 148)">
-        KINETIC MANGA PORTFOLIO // MMV.26
-      </text>
-
-      <!-- Top-Left Panel Registration Tag -->
-      <rect x="582" y="38" width="128" height="19" fill="#584CE6" />
-      <text x="646" y="51" class="f-mono" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.4">
-        PANEL // 00-A
-      </text>
-
-      <!-- Bottom-Left Panel Telemetry Dossier -->
-      <text x="564" y="226" class="f-mono" font-size="10" font-weight="700" fill="#ECECF0" letter-spacing="1.5">
-        ARCH: WEB · LOGIC · SYSTEMS
-      </text>
-      <text x="564" y="242" class="f-mono" font-size="9.5" font-weight="600" fill="#A6A6B2" letter-spacing="1.4">
-        STATUS: <tspan fill="#584CE6">OPEN FOR INTERNSHIPS</tspan>
-      </text>
-
-      <!-- Razor Corner Target Marks -->
-      <path d="M886 38 L904 38 L902 56" stroke="#584CE6" stroke-width="2" fill="none" />
-      <path d="M554 234 L552 250 L570 250" stroke="#ECECF0" stroke-width="1.5" fill="none" />
-    </g>
-
-    <!-- Panel Outer Border Rim -->
-    <polygon points="566,22 924,22 904,254 538,264" fill="none" stroke="#060608" stroke-width="2.5" />
-
-    <!-- 7. VERTICAL KANJI STAMP (電光石火) & VELOCITY // ARCHIVE RAIL ON FAR RIGHT -->
-    <g transform="translate(946, 26)">
-      <!-- Vertical Monospace Label -->
-      <text x="0" y="4" class="f-mono" font-size="8.5" font-weight="700" fill="#4E4E57" letter-spacing="2" transform="rotate(90 0 4)">
-        VELOCITY // ARCHIVE
-      </text>
-
-      <!-- Vertical Violet Border Line -->
-      <line x1="38" y1="0" x2="38" y2="122" stroke="#584CE6" stroke-width="2.2" />
-
-      <!-- Stacked Vertical Kanji Stamp: 電光石火 -->
-      <text x="24" y="22" class="f-kanji" font-size="22" fill="#584CE6" text-anchor="middle">電</text>
-      <text x="24" y="50" class="f-kanji" font-size="22" fill="#584CE6" text-anchor="middle">光</text>
-      <text x="24" y="78" class="f-kanji" font-size="22" fill="#584CE6" text-anchor="middle">石</text>
-      <text x="24" y="106" class="f-kanji" font-size="22" fill="#584CE6" text-anchor="middle">火</text>
-    </g>
-
-    <!-- 8. ANIMATED BLACK AMATERASU LIGHTNING (3-LAYER STROKE STACK, 5S CYCLE) -->
-    <g class="amaterasu-main" stroke-linecap="square" stroke-linejoin="bevel">
-      <path d="M882 6 L818 58 L846 54 L768 118 L802 112 L714 186 L748 180 L654 268" stroke="#584CE6" stroke-width="9.5" stroke-opacity="0.78" />
-      <path d="M882 6 L818 58 L846 54 L768 118 L802 112 L714 186 L748 180 L654 268" stroke="#ECECF0" stroke-width="5.6" />
-      <path d="M882 6 L818 58 L846 54 L768 118 L802 112 L714 186 L748 180 L654 268" stroke="#060608" stroke-width="3.2" />
-    </g>
-
-    <!-- Secondary Branching Forks & Electric Impact Sparks (Ignite on Aftershock) -->
-    <g class="amaterasu-forks" stroke-linecap="square" stroke-linejoin="bevel">
-      <!-- Fork A (Upper Left Branch) -->
-      <path d="M818 58 L754 78 L768 84 L718 110" stroke="#584CE6" stroke-width="5" stroke-opacity="0.78" />
-      <path d="M818 58 L754 78 L768 84 L718 110" stroke="#ECECF0" stroke-width="3" />
-      <path d="M818 58 L754 78 L768 84 L718 110" stroke="#060608" stroke-width="1.6" />
-
-      <!-- Fork B (Mid Right Branch) -->
-      <path d="M802 112 L862 144 L844 150 L894 186" stroke="#584CE6" stroke-width="5" stroke-opacity="0.78" />
-      <path d="M802 112 L862 144 L844 150 L894 186" stroke="#ECECF0" stroke-width="3" />
-      <path d="M802 112 L862 144 L844 150 L894 186" stroke="#060608" stroke-width="1.6" />
-
-      <!-- Fork C (Lower Left Branch) -->
-      <path d="M714 186 L642 204 L658 212 L604 242" stroke="#584CE6" stroke-width="4.5" stroke-opacity="0.78" />
-      <path d="M714 186 L642 204 L658 212 L604 242" stroke="#ECECF0" stroke-width="2.6" />
-      <path d="M714 186 L642 204 L658 212 L604 242" stroke="#060608" stroke-width="1.4" />
-
-      <!-- Crisp Angular Impact Sparks -->
-      <polygon points="894,24 918,14 902,34" fill="#060608" stroke="#584CE6" stroke-width="1.2" />
-      <polygon points="736,52 712,44 728,62" fill="#584CE6" />
-      <polygon points="866,104 892,96 874,116" fill="#ECECF0" stroke="#060608" stroke-width="1.2" />
-      <polygon points="632,172 608,180 628,188" fill="#584CE6" />
-      <polygon points="676,258 698,274 668,268" fill="#ECECF0" stroke="#584CE6" stroke-width="1.2" />
-    </g>
-
-    <!-- 9. DIAGONAL PITCH-BLACK (#060608) BOTTOM INK RIDGE -->
-    <polygon points="0,294 1000,262 1000,320 0,320" fill="#060608" />
-    <!-- Razor Electric-Violet Seam Line Along Diagonal Cut -->
-    <line x1="0" y1="294" x2="1000" y2="262" stroke="#584CE6" stroke-width="2" />
-
-    <!-- Bottom Ink Ridge Telemetry Bar -->
-    <text x="44" y="310" class="f-mono" font-size="9.5" font-weight="600" fill="#A6A6B2" letter-spacing="1.4">
-      STACK: <tspan fill="#ECECF0">TYPESCRIPT · REACT · PYTHON · GDSCRIPT · PHP · SQL</tspan>
+    <!-- Left-Aligned Clean Typography -->
+    <text x="52" y="88" class="title" font-size="31" fill="#F4F4F4">
+      HANAN FATHURROZAQ HIDAYATULLAH
     </text>
-    <text x="956" y="304" class="f-mono" font-size="9.5" font-weight="700" fill="#ECECF0" text-anchor="end" letter-spacing="1.5">
-      <tspan fill="#584CE6">●</tspan> HANAN.ACKTEAMS.COM <tspan fill="#584CE6">//</tspan> UTC+7
+
+    <text x="52" y="120" class="mono" font-size="13" font-weight="400" fill="#A3A3A3" letter-spacing="0.02em">
+      Software Engineering Student · SMK Plus Pelita Nusantara · Bogor, ID
     </text>
+
+    <!-- Subtle Hairline Rule -->
+    <line x1="52" y1="152" x2="540" y2="152" stroke="#262626" stroke-width="1" />
+
+    <!-- Minimal Bottom Meta Line -->
+    <text x="52" y="176" class="mono" font-size="11.5" font-weight="500" fill="#737373" letter-spacing="0.06em">
+      TypeScript · React · Python · GDScript · PHP · SQL
+    </text>
+
+    <!-- Crisp 1px Subtle Border (#262626) -->
+    <rect x="0.5" y="0.5" width="999" height="219" stroke="#262626" stroke-width="1" />
   </g>
 </svg>
