@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 44" width="100%" height="100%" fill="none" role="img" aria-label="8-Car Shinkansen High-Speed Divider">
+  <defs>
+    <clipPath id="divider-clip">
+      <rect x="0" y="0" width="1000" height="44" />
+    </clipPath>
+    <linearGradient id="headlight-flare" x1="896" y1="28" x2="928" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#584CE6" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#584CE6" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .f-mono {
+      font-family: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      text-transform: uppercase;
+    }
+
+    /* 8-Car Shinkansen High-Speed Pass: ~1.6s flyby every 10s cycle */
+    .shinkansen-train {
+      will-change: transform;
+      animation: shinkansen-glide 10s linear infinite;
+    }
+
+    @keyframes shinkansen-glide {
+      0%, 4% {
+        transform: translateX(-960px);
+      }
+      20%, 100% {
+        transform: translateX(1060px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shinkansen-train {
+        animation: none !important;
+        transform: translateX(40px) !important;
+      }
+    }
+  </style>
+
+  <g clip-path="url(#divider-clip)">
+    <!-- Matte Manga Paper Track Band (#ECECF0) so the #060608 Shinkansen has 100% contrast on both Dark & Light GitHub -->
+    <rect x="0" y="0" width="1000" height="44" fill="#ECECF0" />
+
+    <!-- Subtle Station Telemetry Markers in Background -->
+    <text x="16" y="13" class="f-mono" font-size="7.5" font-weight="600" fill="#4E4E57" letter-spacing="1.6" opacity="0.75">
+      SHINKANSEN // 08-CAR CONSIST
+    </text>
+    <text x="984" y="13" class="f-mono" font-size="7.5" font-weight="600" fill="#584CE6" text-anchor="end" letter-spacing="1.6" opacity="0.85">
+      電光石火 // HIGH-VELOCITY TRANSIT
+    </text>
+
+    <!-- Animated 8-Car Bullet Train Silhouette (Scaled 0.5x from Portfolio 1840x64 Spec -> 920px Consist) -->
+    <g class="shinkansen-train" transform="translate(0, 4)">
+      <!-- Trailing Wind-Shear Speedlines Behind Car 8 -->
+      <rect x="0" y="15" width="24" height="1" fill="#060608" opacity="0.6" />
+      <rect x="4" y="19.2" width="21" height="1.2" fill="#584CE6" opacity="0.95" />
+      <rect x="1" y="23.5" width="18" height="1" fill="#060608" opacity="0.45" />
+
+      <!-- Car 8 (Tapered Aerodynamic Tail Car, x: 14..115) -->
+      <path d="M14 32 L14 30.8 C21 27.2 32 21.8 44 16.8 C52 13.5 59 12.5 68 12.5 L115 12.5 L115 32 Z" fill="#060608" />
+
+      <!-- 7 Articulated Dark Gangway Connectors + Continuous Bottom Skirt Seam -->
+      <g fill="#16161F">
+        <rect x="115" y="13.8" width="2" height="18.2" />
+        <rect x="227" y="13.8" width="2" height="18.2" />
+        <rect x="339" y="13.8" width="2" height="18.2" />
+        <rect x="451" y="13.8" width="2" height="18.2" />
+        <rect x="563" y="13.8" width="2" height="18.2" />
+        <rect x="675" y="13.8" width="2" height="18.2" />
+        <rect x="787" y="13.8" width="3" height="18.2" />
+      </g>
+      <rect x="114" y="29" width="677" height="3" fill="#060608" />
+
+      <!-- Cars 7 to 2 (6 Middle Cars, 110px each) -->
+      <g fill="#060608">
+        <rect x="117" y="12.5" width="110" height="19.5" />
+        <rect x="229" y="12.5" width="110" height="19.5" />
+        <rect x="341" y="12.5" width="110" height="19.5" />
+        <rect x="453" y="12.5" width="110" height="19.5" />
+        <rect x="565" y="12.5" width="110" height="19.5" />
+        <rect x="677" y="12.5" width="110" height="19.5" />
+      </g>
+
+      <!-- Single-Arm Pantograph #1 on Car 6 Roof (x: ~284..312) + #584CE6 Contact Spark -->
+      <path d="M284 12.5 L288 10.6 L308 10.6 L312 12.5 Z" fill="#060608" />
+      <path d="M299 10.8 L292.5 7 L300.5 4.1 M296.5 4.1 L304.5 4.1" stroke="#060608" stroke-width="1.3" stroke-linecap="butt" stroke-linejoin="bevel" />
+      <polygon points="300.5,1.5 302.5,3.4 300.5,5.3 298.5,3.4" fill="#584CE6" />
+
+      <!-- Single-Arm Pantograph #2 on Car 2 Roof (x: ~716..744) + #584CE6 Contact Spark -->
+      <path d="M716 12.5 L720 10.6 L740 10.6 L744 12.5 Z" fill="#060608" />
+      <path d="M727 10.8 L733.5 7 L725.5 4.1 M721.5 4.1 L729.5 4.1" stroke="#060608" stroke-width="1.3" stroke-linecap="butt" stroke-linejoin="bevel" />
+      <polygon points="725.5,1.5 727.5,3.4 725.5,5.3 723.5,3.4" fill="#584CE6" />
+
+      <!-- Car 1 (Aerodynamic Duckbill Lead Nose Car, x: 790..902) -->
+      <path d="M790 12.5 L838 12.5 C847 12.5 854 14.2 862 17.2 C875 22 889 25.8 900 29.8 L902 31 L902 32 L790 32 Z" fill="#060608" />
+
+      <!-- Headlight Flare & Nose Lamp -->
+      <polygon points="895,28 926,22.5 926,31.8" fill="url(#headlight-flare)" />
+      <path d="M891 27.1 L897 28.3 L895.5 29.1 L890 28 Z" fill="#ECECF0" />
+
+      <!-- Continuous Razor-Thin #584CE6 Livery Stripe + Tail Marker -->
+      <circle cx="29" cy="25" r="1.2" fill="#584CE6" />
+      <path d="M34 22.1 L875 22.1 L892 27.4 L874 23.1 L33 23.1 Z" fill="#584CE6" />
+
+      <!-- Crisp #ECECF0 Window Slits Across All 8 Cars -->
+      <g fill="#ECECF0">
+        <!-- Car 8 Tail Windows -->
+        <path d="M45 16.9 L54 15.1 L55 17.4 L46.5 18.8 Z" />
+        <rect x="58" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="69" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="80" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="91" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="102" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 7 Windows -->
+        <rect x="126" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="137" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="148" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="159" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="170" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="181" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="192" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="203" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="214" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 6 Windows -->
+        <rect x="238" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="249" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="260" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="271" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="282" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="293" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="304" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="315" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="326" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 5 Windows -->
+        <rect x="350" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="361" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="372" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="383" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="394" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="405" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="416" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="427" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="438" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 4 Windows -->
+        <rect x="462" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="473" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="484" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="495" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="506" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="517" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="528" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="539" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="550" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 3 Windows -->
+        <rect x="574" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="585" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="596" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="607" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="618" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="629" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="640" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="651" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="662" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 2 Windows -->
+        <rect x="686" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="697" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="708" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="719" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="730" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="741" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="752" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="763" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="774" y="16.5" width="6.5" height="3.5" rx="0.5" />
+
+        <!-- Car 1 Lead Windows + Cockpit Windshield Slit -->
+        <rect x="797" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="808" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="819" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <rect x="830" y="16.5" width="6.5" height="3.5" rx="0.5" />
+        <path d="M843 14.2 L857 16.8 L854.5 19.1 L841.5 16.9 Z" />
+      </g>
+    </g>
+
+    <!-- Thin Pitch-Black (#060608) Track Bed + Electric-Violet Precision Rail Ticks -->
+    <rect x="0" y="36" width="1000" height="8" fill="#060608" />
+    <line x1="0" y1="36" x2="1000" y2="36" stroke="#584CE6" stroke-width="1.2" />
+    <g fill="#584CE6">
+      <rect x="44" y="39" width="14" height="2" />
+      <rect x="250" y="39" width="8" height="2" opacity="0.6" />
+      <rect x="496" y="39" width="14" height="2" />
+      <rect x="750" y="39" width="8" height="2" opacity="0.6" />
+      <rect x="942" y="39" width="14" height="2" />
+    </g>
+  </g>
+</svg>
