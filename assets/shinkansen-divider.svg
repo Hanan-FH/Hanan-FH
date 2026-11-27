@@ -5,164 +5,153 @@
     </clipPath>
   </defs>
 
-  <style>
-    .shinkansen {
-      will-change: transform;
-      animation: pass 10s linear infinite;
-    }
-
-    @keyframes pass {
-      0%, 4% {
-        transform: translateX(-760px);
-      }
-      20%, 100% {
-        transform: translateX(1040px);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .shinkansen {
-        animation: none !important;
-        transform: translateX(140px) !important;
-      }
-    }
-  </style>
-
-  <g clip-path="url(#track-clip)">
+  <g clip-path="url(#track-clip)" shape-rendering="geometricPrecision">
     <!-- Razor-thin #737373 track line on transparent background -->
     <line x1="0" y1="26.5" x2="1000" y2="26.5" stroke="#737373" stroke-width="1" stroke-opacity="0.45" />
 
-    <!-- Monochrome 8-Car Shinkansen Silhouette (#F4F4F4 body, #737373 outline, #0A0A0A windows) -->
-    <g class="shinkansen" transform="translate(0, 2) scale(0.38)">
-      <!-- Car 8 (Tapered Tail Car) -->
-      <path
-        d="M28 64 L28 61.5 C42 54.5 64 43.5 88 33.5 C104 27 118 25 136 25 L230 25 L230 64 Z"
-        fill="#F4F4F4"
-        stroke="#737373"
-        stroke-width="1.5"
+    <!-- Outer translation wrapper (no conflicting scale attribute) for smooth subpixel SMIL glide -->
+    <g>
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="-720 0; 1040 0; 1040 0"
+        keyTimes="0; 0.5; 1"
+        dur="9s"
+        repeatCount="indefinite"
       />
 
-      <!-- 7 Articulated Connectors -->
-      <g fill="#737373">
-        <rect x="230" y="28" width="4" height="36" />
-        <rect x="454" y="28" width="4" height="36" />
-        <rect x="678" y="28" width="4" height="36" />
-        <rect x="902" y="28" width="4" height="36" />
-        <rect x="1126" y="28" width="4" height="36" />
-        <rect x="1350" y="28" width="4" height="36" />
-        <rect x="1574" y="28" width="6" height="36" />
-      </g>
+      <!-- Inner scaled 8-Car Shinkansen Silhouette (#F4F4F4 body, #737373 outline, #0A0A0A windows) -->
+      <g transform="translate(0, 2) scale(0.38)">
+        <!-- Car 8 (Tapered Tail Car) -->
+        <path
+          d="M28 64 L28 61.5 C42 54.5 64 43.5 88 33.5 C104 27 118 25 136 25 L230 25 L230 64 Z"
+          fill="#F4F4F4"
+          stroke="#737373"
+          stroke-width="1.5"
+        />
 
-      <!-- Cars 7 to 2 (6 Middle Cars) -->
-      <g fill="#F4F4F4" stroke="#737373" stroke-width="1.5">
-        <rect x="234" y="25" width="220" height="39" />
-        <rect x="458" y="25" width="220" height="39" />
-        <rect x="682" y="25" width="220" height="39" />
-        <rect x="906" y="25" width="220" height="39" />
-        <rect x="1130" y="25" width="220" height="39" />
-        <rect x="1354" y="25" width="220" height="39" />
-      </g>
+        <!-- 7 Articulated Connectors -->
+        <g fill="#737373">
+          <rect x="230" y="28" width="4" height="36" />
+          <rect x="454" y="28" width="4" height="36" />
+          <rect x="678" y="28" width="4" height="36" />
+          <rect x="902" y="28" width="4" height="36" />
+          <rect x="1126" y="28" width="4" height="36" />
+          <rect x="1350" y="28" width="4" height="36" />
+          <rect x="1574" y="28" width="6" height="36" />
+        </g>
 
-      <!-- Single-Arm Pantographs on Car 6 & Car 2 -->
-      <path d="M568 25 L576 21 L616 21 L624 25 Z" fill="#F4F4F4" stroke="#737373" stroke-width="1.2" />
-      <path d="M598 21 L585 13.5 L601 8 M593 8 L609 8" stroke="#737373" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="bevel" />
+        <!-- Cars 7 to 2 (6 Middle Cars) -->
+        <g fill="#F4F4F4" stroke="#737373" stroke-width="1.5">
+          <rect x="234" y="25" width="220" height="39" />
+          <rect x="458" y="25" width="220" height="39" />
+          <rect x="682" y="25" width="220" height="39" />
+          <rect x="906" y="25" width="220" height="39" />
+          <rect x="1130" y="25" width="220" height="39" />
+          <rect x="1354" y="25" width="220" height="39" />
+        </g>
 
-      <path d="M1432 25 L1440 21 L1480 21 L1488 25 Z" fill="#F4F4F4" stroke="#737373" stroke-width="1.2" />
-      <path d="M1454 21 L1467 13.5 L1451 8 M1443 8 L1459 8" stroke="#737373" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="bevel" />
+        <!-- Single-Arm Pantographs on Car 6 & Car 2 -->
+        <path d="M568 25 L576 21 L616 21 L624 25 Z" fill="#F4F4F4" stroke="#737373" stroke-width="1.2" />
+        <path d="M598 21 L585 13.5 L601 8 M593 8 L609 8" stroke="#737373" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="bevel" />
 
-      <!-- Car 1 (Aerodynamic Lead Nose Car) -->
-      <path
-        d="M1580 25 L1676 25 C1694 25 1708 28.5 1724 34.5 C1750 44 1778 51.5 1800 59.5 L1804 62 L1804 64 L1580 64 Z"
-        fill="#F4F4F4"
-        stroke="#737373"
-        stroke-width="1.5"
-      />
+        <path d="M1432 25 L1440 21 L1480 21 L1488 25 Z" fill="#F4F4F4" stroke="#737373" stroke-width="1.2" />
+        <path d="M1454 21 L1467 13.5 L1451 8 M1443 8 L1459 8" stroke="#737373" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="bevel" />
 
-      <!-- Monochrome Livery Line -->
-      <path d="M68 45 L1750 45 L1784 55 L1748 46.8 L66 46.8 Z" fill="#737373" />
+        <!-- Car 1 (Aerodynamic Lead Nose Car) -->
+        <path
+          d="M1580 25 L1676 25 C1694 25 1708 28.5 1724 34.5 C1750 44 1778 51.5 1800 59.5 L1804 62 L1804 64 L1580 64 Z"
+          fill="#F4F4F4"
+          stroke="#737373"
+          stroke-width="1.5"
+        />
 
-      <!-- Crisp #0A0A0A Window Slits -->
-      <g fill="#0A0A0A">
-        <!-- Car 8 Tail Windows -->
-        <path d="M90 33.8 L108 30.2 L110 34.8 L93 37.5 Z" />
-        <rect x="116" y="33" width="13" height="7" rx="1" />
-        <rect x="138" y="33" width="13" height="7" rx="1" />
-        <rect x="160" y="33" width="13" height="7" rx="1" />
-        <rect x="182" y="33" width="13" height="7" rx="1" />
-        <rect x="204" y="33" width="13" height="7" rx="1" />
+        <!-- Monochrome Livery Line -->
+        <path d="M68 45 L1750 45 L1784 55 L1748 46.8 L66 46.8 Z" fill="#737373" />
 
-        <!-- Car 7 Windows -->
-        <rect x="252" y="33" width="13" height="7" rx="1" />
-        <rect x="274" y="33" width="13" height="7" rx="1" />
-        <rect x="296" y="33" width="13" height="7" rx="1" />
-        <rect x="318" y="33" width="13" height="7" rx="1" />
-        <rect x="340" y="33" width="13" height="7" rx="1" />
-        <rect x="362" y="33" width="13" height="7" rx="1" />
-        <rect x="384" y="33" width="13" height="7" rx="1" />
-        <rect x="406" y="33" width="13" height="7" rx="1" />
-        <rect x="428" y="33" width="13" height="7" rx="1" />
+        <!-- Crisp #0A0A0A Window Slits -->
+        <g fill="#0A0A0A">
+          <!-- Car 8 Tail Windows -->
+          <path d="M90 33.8 L108 30.2 L110 34.8 L93 37.5 Z" />
+          <rect x="116" y="33" width="13" height="7" rx="1" />
+          <rect x="138" y="33" width="13" height="7" rx="1" />
+          <rect x="160" y="33" width="13" height="7" rx="1" />
+          <rect x="182" y="33" width="13" height="7" rx="1" />
+          <rect x="204" y="33" width="13" height="7" rx="1" />
 
-        <!-- Car 6 Windows -->
-        <rect x="476" y="33" width="13" height="7" rx="1" />
-        <rect x="498" y="33" width="13" height="7" rx="1" />
-        <rect x="520" y="33" width="13" height="7" rx="1" />
-        <rect x="542" y="33" width="13" height="7" rx="1" />
-        <rect x="564" y="33" width="13" height="7" rx="1" />
-        <rect x="586" y="33" width="13" height="7" rx="1" />
-        <rect x="608" y="33" width="13" height="7" rx="1" />
-        <rect x="630" y="33" width="13" height="7" rx="1" />
-        <rect x="652" y="33" width="13" height="7" rx="1" />
+          <!-- Car 7 Windows -->
+          <rect x="252" y="33" width="13" height="7" rx="1" />
+          <rect x="274" y="33" width="13" height="7" rx="1" />
+          <rect x="296" y="33" width="13" height="7" rx="1" />
+          <rect x="318" y="33" width="13" height="7" rx="1" />
+          <rect x="340" y="33" width="13" height="7" rx="1" />
+          <rect x="362" y="33" width="13" height="7" rx="1" />
+          <rect x="384" y="33" width="13" height="7" rx="1" />
+          <rect x="406" y="33" width="13" height="7" rx="1" />
+          <rect x="428" y="33" width="13" height="7" rx="1" />
 
-        <!-- Car 5 Windows -->
-        <rect x="700" y="33" width="13" height="7" rx="1" />
-        <rect x="722" y="33" width="13" height="7" rx="1" />
-        <rect x="744" y="33" width="13" height="7" rx="1" />
-        <rect x="766" y="33" width="13" height="7" rx="1" />
-        <rect x="788" y="33" width="13" height="7" rx="1" />
-        <rect x="810" y="33" width="13" height="7" rx="1" />
-        <rect x="832" y="33" width="13" height="7" rx="1" />
-        <rect x="854" y="33" width="13" height="7" rx="1" />
-        <rect x="876" y="33" width="13" height="7" rx="1" />
+          <!-- Car 6 Windows -->
+          <rect x="476" y="33" width="13" height="7" rx="1" />
+          <rect x="498" y="33" width="13" height="7" rx="1" />
+          <rect x="520" y="33" width="13" height="7" rx="1" />
+          <rect x="542" y="33" width="13" height="7" rx="1" />
+          <rect x="564" y="33" width="13" height="7" rx="1" />
+          <rect x="586" y="33" width="13" height="7" rx="1" />
+          <rect x="608" y="33" width="13" height="7" rx="1" />
+          <rect x="630" y="33" width="13" height="7" rx="1" />
+          <rect x="652" y="33" width="13" height="7" rx="1" />
 
-        <!-- Car 4 Windows -->
-        <rect x="924" y="33" width="13" height="7" rx="1" />
-        <rect x="946" y="33" width="13" height="7" rx="1" />
-        <rect x="968" y="33" width="13" height="7" rx="1" />
-        <rect x="990" y="33" width="13" height="7" rx="1" />
-        <rect x="1012" y="33" width="13" height="7" rx="1" />
-        <rect x="1034" y="33" width="13" height="7" rx="1" />
-        <rect x="1056" y="33" width="13" height="7" rx="1" />
-        <rect x="1078" y="33" width="13" height="7" rx="1" />
-        <rect x="1100" y="33" width="13" height="7" rx="1" />
+          <!-- Car 5 Windows -->
+          <rect x="700" y="33" width="13" height="7" rx="1" />
+          <rect x="722" y="33" width="13" height="7" rx="1" />
+          <rect x="744" y="33" width="13" height="7" rx="1" />
+          <rect x="766" y="33" width="13" height="7" rx="1" />
+          <rect x="788" y="33" width="13" height="7" rx="1" />
+          <rect x="810" y="33" width="13" height="7" rx="1" />
+          <rect x="832" y="33" width="13" height="7" rx="1" />
+          <rect x="854" y="33" width="13" height="7" rx="1" />
+          <rect x="876" y="33" width="13" height="7" rx="1" />
 
-        <!-- Car 3 Windows -->
-        <rect x="1148" y="33" width="13" height="7" rx="1" />
-        <rect x="1170" y="33" width="13" height="7" rx="1" />
-        <rect x="1192" y="33" width="13" height="7" rx="1" />
-        <rect x="1214" y="33" width="13" height="7" rx="1" />
-        <rect x="1236" y="33" width="13" height="7" rx="1" />
-        <rect x="1258" y="33" width="13" height="7" rx="1" />
-        <rect x="1280" y="33" width="13" height="7" rx="1" />
-        <rect x="1302" y="33" width="13" height="7" rx="1" />
-        <rect x="1324" y="33" width="13" height="7" rx="1" />
+          <!-- Car 4 Windows -->
+          <rect x="924" y="33" width="13" height="7" rx="1" />
+          <rect x="946" y="33" width="13" height="7" rx="1" />
+          <rect x="968" y="33" width="13" height="7" rx="1" />
+          <rect x="990" y="33" width="13" height="7" rx="1" />
+          <rect x="1012" y="33" width="13" height="7" rx="1" />
+          <rect x="1034" y="33" width="13" height="7" rx="1" />
+          <rect x="1056" y="33" width="13" height="7" rx="1" />
+          <rect x="1078" y="33" width="13" height="7" rx="1" />
+          <rect x="1100" y="33" width="13" height="7" rx="1" />
 
-        <!-- Car 2 Windows -->
-        <rect x="1372" y="33" width="13" height="7" rx="1" />
-        <rect x="1394" y="33" width="13" height="7" rx="1" />
-        <rect x="1416" y="33" width="13" height="7" rx="1" />
-        <rect x="1438" y="33" width="13" height="7" rx="1" />
-        <rect x="1460" y="33" width="13" height="7" rx="1" />
-        <rect x="1482" y="33" width="13" height="7" rx="1" />
-        <rect x="1504" y="33" width="13" height="7" rx="1" />
-        <rect x="1526" y="33" width="13" height="7" rx="1" />
-        <rect x="1548" y="33" width="13" height="7" rx="1" />
+          <!-- Car 3 Windows -->
+          <rect x="1148" y="33" width="13" height="7" rx="1" />
+          <rect x="1170" y="33" width="13" height="7" rx="1" />
+          <rect x="1192" y="33" width="13" height="7" rx="1" />
+          <rect x="1214" y="33" width="13" height="7" rx="1" />
+          <rect x="1236" y="33" width="13" height="7" rx="1" />
+          <rect x="1258" y="33" width="13" height="7" rx="1" />
+          <rect x="1280" y="33" width="13" height="7" rx="1" />
+          <rect x="1302" y="33" width="13" height="7" rx="1" />
+          <rect x="1324" y="33" width="13" height="7" rx="1" />
 
-        <!-- Car 1 Lead Windows + Cockpit Slit -->
-        <rect x="1594" y="33" width="13" height="7" rx="1" />
-        <rect x="1616" y="33" width="13" height="7" rx="1" />
-        <rect x="1638" y="33" width="13" height="7" rx="1" />
-        <rect x="1660" y="33" width="13" height="7" rx="1" />
-        <path d="M1686 28.5 L1714 33.5 L1709 38.2 L1683 33.8 Z" />
+          <!-- Car 2 Windows -->
+          <rect x="1372" y="33" width="13" height="7" rx="1" />
+          <rect x="1394" y="33" width="13" height="7" rx="1" />
+          <rect x="1416" y="33" width="13" height="7" rx="1" />
+          <rect x="1438" y="33" width="13" height="7" rx="1" />
+          <rect x="1460" y="33" width="13" height="7" rx="1" />
+          <rect x="1482" y="33" width="13" height="7" rx="1" />
+          <rect x="1504" y="33" width="13" height="7" rx="1" />
+          <rect x="1526" y="33" width="13" height="7" rx="1" />
+          <rect x="1548" y="33" width="13" height="7" rx="1" />
+
+          <!-- Car 1 Lead Windows + Cockpit Slit -->
+          <rect x="1594" y="33" width="13" height="7" rx="1" />
+          <rect x="1616" y="33" width="13" height="7" rx="1" />
+          <rect x="1638" y="33" width="13" height="7" rx="1" />
+          <rect x="1660" y="33" width="13" height="7" rx="1" />
+          <path d="M1686 28.5 L1714 33.5 L1709 38.2 L1683 33.8 Z" />
+        </g>
       </g>
     </g>
   </g>
